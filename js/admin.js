@@ -62,11 +62,11 @@ palettes.glass = [
   '#FAFAFA','#F2F4F7','#E9EDF2','#E0E5EC','#D6DCE5','#F5F7FA','#EBEEF3','#E1E5EB','#D7DCE4','#CDD3DD'
 ];
 palettes.cursorShadow = [
-  '#FF2D55','#FF3B30','#FF453A','#FF375F','#FF1744','#F50057','#E91E63','#D81B60','#C2185B','#AD1457',
-  '#FF4D00','#FF5A1F','#FF6B35','#FF7A00','#FF8C00','#FF9500','#FFB000','#FFC107','#FFD60A','#FFE600',
-  '#0A66FF','#007AFF','#0066FF','#0057FF','#1E88FF','#2196F3','#00A3FF','#00B8FF','#00C2FF','#00D4FF',
-  '#5856D6','#5E5CE6','#6C5CE7','#7C3AED','#8B5CF6','#9B59FF','#AF52DE','#BF5AF2','#D946EF','#E600A9',
-  '#00A896','#00BFA6','#00C7BE','#00D084','#00E09D','#34C759','#30D158','#64D26A','#7ED957','#A3E635'
+  '#ED2939','#D90429','#C1121F','#B91C1C','#A4161A','#9B111E','#8B0000','#7F1D1D','#DC2626','#EF233C',
+  '#FF3B30','#FF453A','#FF4D00','#FF5A1F','#FF6B35','#FF7A00','#FF8C00','#FF9500','#FFB000','#FFD60A',
+  '#002395','#003399','#0057B8','#0068FF','#0A66FF','#007AFF','#1E88FF','#2196F3','#00A3FF','#00C2FF',
+  '#3F37C9','#4F46E5','#5856D6','#5E5CE6','#6C5CE7','#7C3AED','#8B5CF6','#9B59FF','#AF52DE','#BF5AF2',
+  '#00875A','#00A896','#00BFA6','#00C7BE','#00D084','#00A86B','#34C759','#30D158','#64D26A','#7ED957'
 ];
 palettes.cursor = [...palettes.accent, ...palettes.softAccent, ...palettes.dark];
 palettes.text = [...palettes.text, ...palettes.dark];
@@ -311,7 +311,7 @@ function colorGroup(key, label) {
 function renderTheme() {
   const panel = byId('panel-theme');
   panel.innerHTML = panelHeading('02 · DESIGN SYSTEM', 'Quiet foundations. Energetic emphasis.', 'Each control now has 50 colours selected specifically for its role: background-safe neutrals, readable text, muted support tones, or energetic highlights.') + `
-    <div class="notice">The shipped software-sales version uses pure white, black text, restrained blue edges, and an action-only white glass cursor with an independent red 3D shadow. Every palette remains editable.</div>
+    <div class="notice">The shipped software-sales version uses pure white, black text, restrained blue edges, and an action-only full-colour 3D cursor. The shipped default is French-flag red; its 50-colour palette is independent from the website accent. Every palette remains editable.</div>
     <article class="editor-card">
       ${colorGroup('background', 'Page background')}
       ${colorGroup('surface', 'Card background')}
@@ -322,7 +322,7 @@ function renderTheme() {
       ${colorGroup('border', 'Borders')}
       ${colorGroup('darkSectionBackground', 'Dark impact-section background')}
       ${colorGroup('glassTint', 'Liquid-glass tint · 50 options')}
-      ${colorGroup('cursorShadowColor', 'Cursor 3D shadow / interaction colour · independent')}
+      ${colorGroup('cursorShadowColor', 'Clickable cursor 3D colour · 50 independent options')}
       ${colorGroup('cursorColor', 'Cursor fallback color')}
     </article>
     <article class="editor-card"><div class="editor-card-head"><h3>Typography and layout</h3></div><div class="field-grid">
