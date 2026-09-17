@@ -41,7 +41,7 @@ function setTheme(theme) {
     '--dark-section': theme.darkSectionBackground || theme.text,
     '--cursor-color': theme.cursorColor || '#FFFFFF',
     '--glass-tint': theme.glassTint || '#FFFFFF',
-    '--cursor-shadow': theme.cursorShadowColor || '#FF2D55',
+    '--cursor-shadow': theme.cursorShadowColor || '#E10600',
     '--heading-font': theme.headingFont,
     '--body-font': theme.bodyFont,
     '--base-size': `${Number(theme.baseFontSize) || 17}px`,

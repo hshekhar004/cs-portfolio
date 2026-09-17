@@ -62,7 +62,7 @@ palettes.glass = [
   '#FAFAFA','#F2F4F7','#E9EDF2','#E0E5EC','#D6DCE5','#F5F7FA','#EBEEF3','#E1E5EB','#D7DCE4','#CDD3DD'
 ];
 palettes.cursorShadow = [
-  '#ED2939','#D90429','#C1121F','#B91C1C','#A4161A','#9B111E','#8B0000','#7F1D1D','#DC2626','#EF233C',
+  '#E10600','#ED2939','#C1121F','#B91C1C','#A4161A','#9B111E','#8B0000','#7F1D1D','#DC2626','#EF233C',
   '#FF3B30','#FF453A','#FF4D00','#FF5A1F','#FF6B35','#FF7A00','#FF8C00','#FF9500','#FFB000','#FFD60A',
   '#002395','#003399','#0057B8','#0068FF','#0A66FF','#007AFF','#1E88FF','#2196F3','#00A3FF','#00C2FF',
   '#3F37C9','#4F46E5','#5856D6','#5E5CE6','#6C5CE7','#7C3AED','#8B5CF6','#9B59FF','#AF52DE','#BF5AF2',
@@ -322,7 +322,7 @@ function renderTheme() {
       ${colorGroup('border', 'Borders')}
       ${colorGroup('darkSectionBackground', 'Dark impact-section background')}
       ${colorGroup('glassTint', 'Liquid-glass tint · 50 options')}
-      ${colorGroup('cursorShadowColor', 'Clickable cursor 3D colour · 50 independent options')}
+      ${colorGroup('cursorShadowColor', 'Clickable cursor colour · 50 independent options')}
       ${colorGroup('cursorColor', 'Cursor fallback color')}
     </article>
     <article class="editor-card"><div class="editor-card-head"><h3>Typography and layout</h3></div><div class="field-grid">
