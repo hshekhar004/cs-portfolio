@@ -61,6 +61,13 @@ palettes.glass = [
   '#F5FFFC','#ECFBF6','#E3F8F0','#DAF4EA','#D0F0E4','#F8FFF4','#F0FBE8','#E8F7DC','#DFF2D0','#D6EEC4',
   '#FAFAFA','#F2F4F7','#E9EDF2','#E0E5EC','#D6DCE5','#F5F7FA','#EBEEF3','#E1E5EB','#D7DCE4','#CDD3DD'
 ];
+palettes.cursorShadow = [
+  '#FF2D55','#FF3B30','#FF453A','#FF375F','#FF1744','#F50057','#E91E63','#D81B60','#C2185B','#AD1457',
+  '#FF4D00','#FF5A1F','#FF6B35','#FF7A00','#FF8C00','#FF9500','#FFB000','#FFC107','#FFD60A','#FFE600',
+  '#0A66FF','#007AFF','#0066FF','#0057FF','#1E88FF','#2196F3','#00A3FF','#00B8FF','#00C2FF','#00D4FF',
+  '#5856D6','#5E5CE6','#6C5CE7','#7C3AED','#8B5CF6','#9B59FF','#AF52DE','#BF5AF2','#D946EF','#E600A9',
+  '#00A896','#00BFA6','#00C7BE','#00D084','#00E09D','#34C759','#30D158','#64D26A','#7ED957','#A3E635'
+];
 palettes.cursor = [...palettes.accent, ...palettes.softAccent, ...palettes.dark];
 palettes.text = [...palettes.text, ...palettes.dark];
 
@@ -296,7 +303,7 @@ function renderIdentity() {
 
 function colorGroup(key, label) {
   const value = state.content.theme[key];
-  const category = key === 'glassTint' ? 'glass' : key === 'cursorColor' ? 'cursor' : key === 'darkSectionBackground' ? 'dark' : ['background', 'surface'].includes(key) ? 'background' : ['accent', 'accentSecondary'].includes(key) ? 'accent' : ['muted', 'border'].includes(key) ? 'muted' : 'text';
+  const category = key === 'glassTint' ? 'glass' : key === 'cursorShadowColor' ? 'cursorShadow' : key === 'cursorColor' ? 'cursor' : key === 'darkSectionBackground' ? 'dark' : ['background', 'surface'].includes(key) ? 'background' : ['accent', 'accentSecondary'].includes(key) ? 'accent' : ['muted', 'border'].includes(key) ? 'muted' : 'text';
   const colors = palettes[category];
   return `<div class="palette-group"><div class="palette-label"><span>${escapeHtml(label)}</span><input type="color" data-path="theme.${key}" value="${escapeHtml(value)}"></div><div class="swatches swatches-${category}" data-color-path="theme.${key}">${colors.map((color, index) => `<button type="button" class="swatch swatch-${index + 1} ${color.toLowerCase() === String(value).toLowerCase() ? 'active' : ''}" data-color="${color}" aria-label="Set ${label} to ${color}"></button>`).join('')}</div></div>`;
 }
@@ -304,7 +311,7 @@ function colorGroup(key, label) {
 function renderTheme() {
   const panel = byId('panel-theme');
   panel.innerHTML = panelHeading('02 · DESIGN SYSTEM', 'Quiet foundations. Energetic emphasis.', 'Each control now has 50 colours selected specifically for its role: background-safe neutrals, readable text, muted support tones, or energetic highlights.') + `
-    <div class="notice">The shipped software-sales version uses pure white, black text, restrained blue edges, and a clear white liquid-glass cursor. Every palette remains editable.</div>
+    <div class="notice">The shipped software-sales version uses pure white, black text, restrained blue edges, and an action-only white glass cursor with an independent red 3D shadow. Every palette remains editable.</div>
     <article class="editor-card">
       ${colorGroup('background', 'Page background')}
       ${colorGroup('surface', 'Card background')}

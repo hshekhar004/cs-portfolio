@@ -41,7 +41,7 @@ function setTheme(theme) {
     '--dark-section': theme.darkSectionBackground || theme.text,
     '--cursor-color': theme.cursorColor || '#FFFFFF',
     '--glass-tint': theme.glassTint || '#FFFFFF',
-    '--cursor-shadow': theme.cursorShadowColor || '#0A66FF',
+    '--cursor-shadow': theme.cursorShadowColor || '#FF2D55',
     '--heading-font': theme.headingFont,
     '--body-font': theme.bodyFont,
     '--base-size': `${Number(theme.baseFontSize) || 17}px`,
@@ -602,9 +602,8 @@ function initCursor() {
       cursor.style.top = `${event.clientY}px`;
 
       const interactive = event.target.closest('a, button, [role="button"], .certification-card');
-      const readable = event.target.closest('a, button, [role="button"], .certification-card, h1, h2, h3, p, li, strong, .metric-value, .skill-pill, .tag, .certificate-copy, .certificate-meta, .certificate-status');
 
-      cursor.classList.toggle('is-active', Boolean(readable));
+      cursor.classList.remove('is-active');
       cursor.classList.toggle('is-link', Boolean(interactive));
       document.body.classList.toggle('cursor-over-link', Boolean(interactive));
 

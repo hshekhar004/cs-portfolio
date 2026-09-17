@@ -49,7 +49,7 @@ window.SITE_CONTENT = {
     "contentWidth": 1240,
     "cornerRadius": 18,
     "glassTint": "#FFFFFF",
-    "cursorShadowColor": "#0A66FF"
+    "cursorShadowColor": "#FF2D55"
   },
   "security": {
     "adminUsername": "HSHEKHAR004",
