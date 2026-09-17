@@ -515,61 +515,40 @@ body { background: #fff; }
 .certificate-status { display: inline-flex; margin-top: 22px; padding: 8px 11px; border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border)); border-radius: 999px; color: var(--accent); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 @keyframes certificateFlow { from { transform: translateX(0); } to { transform: translateX(-18%); } }
 
-/* Clickable action cursor v5: invisible normally; full-colour 3D glass sphere on interactive targets only. */
-:root { --cursor-shadow: #ED2939; }
+/* Clickable action cursor v6: normal pointer everywhere; simple flat action bubble on links only. */
+:root { --cursor-shadow: #E10600; }
 .custom-cursor {
-  width: 112px; height: 112px; margin: -56px 0 0 -56px;
+  width: 104px; height: 104px; margin: -52px 0 0 -52px;
   border: 1px solid transparent; border-radius: 50%;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  overflow: visible;
+  overflow: hidden;
   opacity: 0;
-  transform: scale(.88);
-  transition: opacity .12s ease, transform .18s var(--ease), background .18s ease, box-shadow .18s ease, border-color .18s ease;
+  transform: scale(.92);
+  transition: opacity .12s ease, transform .16s var(--ease), background .16s ease, box-shadow .16s ease;
   will-change: left, top, transform, opacity;
 }
 .custom-cursor::before,
-.custom-cursor::after { content: none; }
+.custom-cursor::after { content: none !important; }
 .custom-cursor.is-active { opacity: 0; }
 .custom-cursor > span {
-  position: absolute; inset: 12px; z-index: 5; display: grid; place-items: center;
-  color: #fff; opacity: 0; font-size: 13px; font-weight: 900; line-height: 1.12;
+  position: absolute; inset: 12px; z-index: 2; display: grid; place-items: center;
+  color: #fff; opacity: 0;
+  font-size: 11.5px; font-weight: 800; line-height: 1.16;
   letter-spacing: .035em; text-align: center; text-transform: uppercase;
   transition: opacity .12s ease;
-  text-shadow: 0 1px 2px rgba(0,0,0,.24);
+  text-shadow: none;
 }
 .custom-cursor.is-link {
-  opacity: 1; transform: scale(1);
-  border-color: color-mix(in srgb, var(--cursor-shadow) 68%, #ffffff);
-  background:
-    radial-gradient(circle at 30% 22%, rgba(255,255,255,.95) 0 5%, rgba(255,255,255,.58) 6%, transparent 22%),
-    radial-gradient(circle at 68% 78%, color-mix(in srgb, var(--cursor-shadow) 76%, #000000) 0%, transparent 46%),
-    linear-gradient(145deg,
-      color-mix(in srgb, var(--cursor-shadow) 72%, #ffffff) 0%,
-      var(--cursor-shadow) 43%,
-      color-mix(in srgb, var(--cursor-shadow) 82%, #000000) 100%);
+  opacity: 1;
+  transform: scale(1);
+  background: var(--cursor-shadow);
+  border-color: rgba(255,255,255,.22);
   box-shadow:
-    inset 6px 8px 15px rgba(255,255,255,.30),
-    inset -10px -12px 20px color-mix(in srgb, var(--cursor-shadow) 64%, #000000),
-    inset 0 0 0 1px rgba(255,255,255,.28),
-    0 8px 0 -4px color-mix(in srgb, var(--cursor-shadow) 78%, #000000),
-    0 15px 26px -7px color-mix(in srgb, var(--cursor-shadow) 54%, transparent),
-    0 5px 12px rgba(12,18,28,.15);
-  backdrop-filter: saturate(1.1);
-  -webkit-backdrop-filter: saturate(1.1);
-}
-.custom-cursor.is-link::before {
-  content: ""; position: absolute; inset: 5px; border-radius: inherit; pointer-events: none;
-  border-top: 1px solid rgba(255,255,255,.78);
-  border-left: 1px solid rgba(255,255,255,.46);
-  border-right: 1px solid color-mix(in srgb, var(--cursor-shadow) 82%, #000000);
-  border-bottom: 1px solid color-mix(in srgb, var(--cursor-shadow) 72%, #000000);
-}
-.custom-cursor.is-link::after {
-  content: ""; position: absolute; left: 19px; top: 14px; width: 34px; height: 12px; border-radius: 50%;
-  background: rgba(255,255,255,.76); filter: blur(.8px); transform: rotate(-20deg); pointer-events: none;
+    0 8px 22px color-mix(in srgb, var(--cursor-shadow) 24%, transparent),
+    0 2px 6px rgba(12,18,28,.12);
 }
 .custom-cursor.is-link > span { opacity: 1; }
 .cursor-over-link, .cursor-over-link a, .cursor-over-link button, .cursor-over-link [role="button"], .cursor-over-link .certification-card { cursor: none !important; }
