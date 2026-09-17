@@ -315,6 +315,7 @@ function renderTheme() {
       ${colorGroup('border', 'Borders')}
       ${colorGroup('darkSectionBackground', 'Dark impact-section background')}
       ${colorGroup('glassTint', 'Liquid-glass tint · 50 options')}
+      ${colorGroup('cursorShadowColor', 'Cursor 3D shadow / interaction colour · independent')}
       ${colorGroup('cursorColor', 'Cursor fallback color')}
     </article>
     <article class="editor-card"><div class="editor-card-head"><h3>Typography and layout</h3></div><div class="field-grid">

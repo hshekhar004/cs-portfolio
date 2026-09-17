@@ -48,7 +48,8 @@ window.SITE_CONTENT = {
     "baseFontSize": 17,
     "contentWidth": 1240,
     "cornerRadius": 18,
-    "glassTint": "#FFFFFF"
+    "glassTint": "#FFFFFF",
+    "cursorShadowColor": "#0A66FF"
   },
   "security": {
     "adminUsername": "HSHEKHAR004",
