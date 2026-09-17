@@ -114,8 +114,8 @@ img { display: block; max-width: 100%; }
   letter-spacing: .16em; text-transform: uppercase;
 }
 .hero-title {
-  margin: 0; max-width: 1160px; font-family: var(--heading-font); font-size: clamp(3.4rem, 7vw, 7.2rem);
-  line-height: .98; letter-spacing: -.055em; font-weight: 470; text-wrap: balance;
+  margin: 0; max-width: 1160px; font-family: var(--heading-font); font-size: clamp(3.25rem, 6.35vw, 6.65rem);
+  line-height: .96; letter-spacing: -.055em; font-weight: 470; text-wrap: balance;
 }
 .hero-title .accent-word { color: var(--accent); }
 .hero-subtitle {
