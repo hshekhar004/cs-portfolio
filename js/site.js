@@ -595,30 +595,77 @@ function initCursor() {
   const label = cursor.querySelector('span');
   const finePointer = window.matchMedia('(pointer: fine)').matches;
   let glassTarget = null;
+  let magnifier = null;
+  let mouseX = 0;
+  let mouseY = 0;
+  const ZOOM = 1.16;
+
+  function clearMagnifier() {
+    magnifier?.remove();
+    magnifier = null;
+  }
+
+  function buildMagnifier(target) {
+    clearMagnifier();
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    const clone = target.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
+    clone.classList.add('cursor-magnifier');
+    clone.style.width = `${rect.width}px`;
+    clone.style.height = `${rect.height}px`;
+    clone.style.position = 'absolute';
+    clone.style.left = `${rect.left - mouseX + cursor.offsetWidth / 2}px`;
+    clone.style.top = `${rect.top - mouseY + cursor.offsetHeight / 2}px`;
+    clone.style.pointerEvents = 'none';
+    clone.style.transformOrigin = `${mouseX - rect.left}px ${mouseY - rect.top}px`;
+    clone.style.transform = `scale(${ZOOM})`;
+    cursor.appendChild(clone);
+    magnifier = clone;
+  }
+
+  function updateMagnifier(target) {
+    if (!target || !magnifier) return;
+    const rect = target.getBoundingClientRect();
+    magnifier.style.left = `${rect.left - mouseX + cursor.offsetWidth / 2}px`;
+    magnifier.style.top = `${rect.top - mouseY + cursor.offsetHeight / 2}px`;
+    magnifier.style.transformOrigin = `${mouseX - rect.left}px ${mouseY - rect.top}px`;
+    magnifier.style.transform = `scale(${ZOOM})`;
+  }
+
   if (finePointer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     window.addEventListener('mousemove', (event) => {
-      cursor.style.left = `${event.clientX}px`;
-      cursor.style.top = `${event.clientY}px`;
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      cursor.style.left = `${mouseX}px`;
+      cursor.style.top = `${mouseY}px`;
       const interactive = event.target.closest('a, button, [role="button"]');
-      const textTarget = event.target.closest('a, button, [role="button"], h1, h2, h3, p, li, strong, .metric-value, .skill-pill, .tag');
+      const textTarget = event.target.closest('a, button, [role="button"], h1, h2, h3, p, li, strong, .metric-value, .skill-pill, .tag, .certificate-copy, .certificate-meta, .certificate-status');
       cursor.classList.toggle('is-active', Boolean(textTarget));
       cursor.classList.toggle('is-link', Boolean(interactive));
       document.body.classList.toggle('cursor-over-link', Boolean(interactive));
+
       if (glassTarget !== textTarget) {
         glassTarget?.classList.remove('glass-hovered');
         glassTarget = textTarget;
         glassTarget?.classList.add('glass-hovered');
+        buildMagnifier(glassTarget);
       }
-      const visibleLabel = interactive?.textContent?.replace(/\s+/g, ' ').trim();
-      label.textContent = interactive?.dataset.cursor || (visibleLabel ? `Open ${visibleLabel}` : '');
+      updateMagnifier(glassTarget);
+      if (label) label.textContent = '';
     }, { passive: true });
+
+    window.addEventListener('scroll', () => updateMagnifier(glassTarget), { passive: true });
     document.documentElement.addEventListener('mouseleave', () => {
       cursor.classList.remove('is-active', 'is-link');
       document.body.classList.remove('cursor-over-link');
       glassTarget?.classList.remove('glass-hovered');
       glassTarget = null;
+      clearMagnifier();
     });
   }
+
   window.addEventListener('pointerdown', (event) => {
     if (event.pointerType === 'mouse') return;
     const ripple = byId('touchRipple');
