@@ -561,3 +561,6 @@ body { background: #fff; }
 }
 
 @media (prefers-reduced-motion: reduce) { .certification-rail { animation: none; } }
+
+/* v9: certification headline phrase accent only */
+.section-title-wrap h2 .title-blue { color: var(--accent); font: inherit; }
