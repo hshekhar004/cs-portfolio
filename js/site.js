@@ -125,7 +125,8 @@ function renderCertifications() {
         label: item.title || 'Certification',
         type: item.documentType === 'pdf' ? 'pdf' : 'image',
         url: item.documentUrl || item.image,
-        downloadUrl: item.documentUrl || item.image
+        downloadUrl: item.documentUrl || item.image,
+        externalUrl: item.externalUrl || ''
       });
       card.addEventListener('click', open);
       card.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); } });
@@ -317,13 +318,7 @@ function renderEducation() {
       button.className = 'button button-light magnetic';
       button.dataset.cursor = documentItem.label;
       button.textContent = documentItem.label;
-      button.addEventListener('click', () => {
-        if (documentItem === thesis.fullDocument) {
-          window.location.href = documentItem.url || documentItem.downloadUrl;
-          return;
-        }
-        openDocument(documentItem);
-      });
+      button.addEventListener('click', () => openDocument(documentItem));
       actions.appendChild(button);
     });
     if (!actions.children.length) actions.hidden = true;
@@ -365,6 +360,11 @@ function openDocument(documentItem) {
     image.alt = documentItem.label;
     stage.appendChild(image);
   }
+  const external = byId('documentExternal');
+  const externalUrl = documentItem.externalUrl || '';
+  external.hidden = !externalUrl;
+  if (externalUrl) external.href = externalUrl;
+
   const download = byId('documentDownload');
   const downloadUrl = documentItem.downloadUrl || (documentItem.type === 'pdf' ? viewerUrl : '');
   download.hidden = !downloadUrl;

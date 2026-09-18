@@ -369,9 +369,10 @@ const configs = {
       { key: 'description', label: 'What this adds to your software-sales readiness', type: 'textarea', wide: true },
       { key: 'image', label: 'Certificate preview image', type: 'upload', accept: 'image/*' },
       { key: 'documentUrl', label: 'Credential PDF / image to open', type: 'upload', accept: 'image/*,application/pdf' },
-      { key: 'documentType', label: 'Viewer type', type: 'select', items: ['image','pdf'] }
+      { key: 'documentType', label: 'Viewer type', type: 'select', items: ['image','pdf'] },
+      { key: 'externalUrl', label: 'Optional shareable / verification link', type: 'text', wide: true }
     ],
-    blank: { title: 'New certification', issuer: 'Provider', status: 'In progress', date: '2026', description: 'Describe the relevant learning without overstating experience.', image: '', documentUrl: '', documentType: 'image', visible: true }
+    blank: { title: 'New certification', issuer: 'Provider', status: 'In progress', date: '2026', description: 'Describe the relevant learning without overstating experience.', image: '', documentUrl: '', documentType: 'image', externalUrl: '', visible: true }
   },
   capabilities: {
     key: 'capabilities', overline: '05 · EXPERTISE', title: 'Shape your commercial value proposition.', description: 'Each card can be edited, reordered, expanded, and paired with an uploaded image.', label: 'Expertise cards', singular: 'card', titleKey: 'title',

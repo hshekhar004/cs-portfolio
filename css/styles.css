@@ -248,7 +248,8 @@ img { display: block; max-width: 100%; }
 .experience-bullets strong, .education-details strong { color: var(--text); font-weight: 800; }
 
 .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.education-card { min-height: 530px; padding: clamp(30px, 4vw, 52px); background: var(--surface); border-radius: var(--radius); display: flex; flex-direction: column; }
+.education-card { min-height: 530px; padding: clamp(30px, 4vw, 52px); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: flex; flex-direction: column; box-shadow: 0 14px 34px rgba(20, 45, 82, .07), 0 2px 8px rgba(20, 45, 82, .04); transition: transform .32s var(--ease), border-color .3s, box-shadow .32s; }
+.education-card:hover { transform: translateY(-9px) scale(1.008); border-color: color-mix(in srgb, var(--accent) 38%, var(--border)); box-shadow: 0 22px 46px rgba(20, 45, 82, .12), 0 7px 16px rgba(10, 102, 255, .07); }
 .education-card .dates { color: var(--accent); font-size: .73rem; font-weight: 800; letter-spacing: .08em; }
 .education-card h3 { margin: 55px 0 12px; font: 540 clamp(2rem, 3.4vw, 3.6rem)/1.04 var(--heading-font); letter-spacing: -.045em; }
 .education-card .institution { font-weight: 750; }
@@ -534,10 +535,10 @@ body { background: #fff; }
 .custom-cursor::after { content: none !important; }
 .custom-cursor.is-active { opacity: 0; }
 .custom-cursor > span {
-  position: absolute; inset: 12px; z-index: 2; display: grid; place-items: center;
-  color: #fff; opacity: 0;
-  font-size: 11.5px; font-weight: 800; line-height: 1.16;
-  letter-spacing: .035em; text-align: center; text-transform: uppercase;
+  position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center;
+  padding: 15px; color: #fff; opacity: 0;
+  font-size: 10.5px; font-weight: 800; line-height: 1.08;
+  letter-spacing: .02em; text-align: center; text-transform: uppercase; text-wrap: balance;
   transition: opacity .12s ease;
   text-shadow: none;
 }
