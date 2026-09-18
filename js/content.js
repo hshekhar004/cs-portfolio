@@ -178,8 +178,8 @@ window.SITE_CONTENT = {
     "certifications": {
       "visible": true,
       "eyebrow": "CERTIFICATIONS + CURRENT LEARNING",
-      "title": "Building credible SaaS, cloud, AWS, and AI fluency on top of proven B2B sales experience.",
-      "intro": "This section separates completed credentials from learning in progress. It is designed to show software readiness without claiming software employment that I have not had."
+      "title": "A decade of proven B2B sales experience with engineering depth, strengthened by current learning across SaaS, cloud, AWS, AI, and software sales.",
+      "intro": ""
     }
   },
   "metrics": [
