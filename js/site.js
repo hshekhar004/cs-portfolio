@@ -60,10 +60,21 @@ function sectionHead(section) {
   const wrap = document.createElement('div');
   wrap.className = 'section-title-wrap';
   const heading = document.createElement('h2');
-  heading.textContent = section.title;
+  const highlightPhrase = 'SaaS, cloud, AWS, AI, and software sales.';
+  if (section.title && section.title.includes(highlightPhrase)) {
+    const before = section.title.slice(0, section.title.indexOf(highlightPhrase));
+    heading.append(document.createTextNode(before));
+    const highlight = document.createElement('span');
+    highlight.className = 'title-blue';
+    highlight.textContent = highlightPhrase;
+    heading.appendChild(highlight);
+  } else {
+    heading.textContent = section.title;
+  }
   const intro = document.createElement('p');
   intro.innerHTML = section.intro;
-  wrap.append(heading, intro);
+  wrap.append(heading);
+  if (section.intro) wrap.append(intro);
   head.append(eyebrow, wrap);
   return head;
 }
