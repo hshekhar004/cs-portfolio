@@ -117,7 +117,7 @@ function renderCertifications() {
   items.forEach((item, index) => {
     const card = document.createElement('article');
     card.className = 'certification-card magnetic';
-    card.dataset.cursor = item.documentUrl || item.image ? 'View credential' : item.status || 'Learning';
+    card.dataset.cursor = item.documentUrl || item.image ? 'View certificate' : item.status || 'Learning';
     const visual = item.image
       ? `<img src="${attr(item.image)}" alt="${attr(item.title)} certificate preview">`
       : (item.documentType === 'pdf' && item.documentUrl
@@ -631,7 +631,7 @@ function initCursor() {
       document.body.classList.toggle('cursor-over-link', Boolean(interactive));
 
       if (label) {
-        const defaultLabel = interactive?.classList?.contains('certification-card') ? 'View credentials' : '';
+        const defaultLabel = interactive?.classList?.contains('certification-card') ? 'View certificate' : '';
         label.textContent = interactive?.dataset?.cursor || defaultLabel;
       }
     }, { passive: true });
