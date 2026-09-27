@@ -143,7 +143,8 @@ function renderCertifications() {
         url: item.documentUrl || item.image,
         downloadUrl: item.documentUrl || item.image,
         downloadFilename: `${(item.issuer || 'Certificate').replace(/[^a-z0-9]+/gi, '_')}_${(item.title || 'Credential').replace(/[^a-z0-9]+/gi, '_')}.pdf`,
-        externalUrl: item.externalUrl || ''
+        externalUrl: item.externalUrl || '',
+        externalLabel: 'Verify online'
       });
       card.addEventListener('click', (event) => {
         if (event.target.closest('.certificate-verify')) return;
@@ -381,6 +382,8 @@ function openDocument(documentItem) {
     stage.appendChild(image);
   }
   const external = byId('documentExternal');
+  const externalLabel = external.querySelector('b');
+  if (externalLabel) externalLabel.textContent = documentItem.externalLabel || 'View online';
   const externalUrl = documentItem.externalUrl || '';
   external.hidden = !externalUrl;
   if (externalUrl) external.href = externalUrl;

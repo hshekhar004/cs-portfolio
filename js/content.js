@@ -625,7 +625,7 @@ window.SITE_CONTENT = {
       "issuer": "Salesforce",
       "status": "Completed",
       "date": "2026",
-      "description": "Authorized by Salesforce and SV Academy · offered through Coursera",
+      "description": "Issued by Salesforce and SV Academy · through Coursera",
       "image": "assets/certificates/salesforce-sales-development.jpg",
       "documentUrl": "assets/certificates/salesforce-sales-development.pdf",
       "documentType": "pdf",
@@ -637,7 +637,7 @@ window.SITE_CONTENT = {
       "issuer": "Microsoft",
       "status": "Completed",
       "date": "2026",
-      "description": "Authorized by Microsoft · offered through Coursera",
+      "description": "Issued by Microsoft · through Coursera",
       "image": "assets/certificates/microsoft-sales-ai.jpg",
       "documentUrl": "assets/certificates/microsoft-sales-ai.pdf",
       "documentType": "pdf",
@@ -649,7 +649,7 @@ window.SITE_CONTENT = {
       "issuer": "IBM",
       "status": "Completed",
       "date": "2026",
-      "description": "Authorized by IBM · offered through Coursera",
+      "description": "Issued by IBM · through Coursera",
       "image": "assets/certificates/ibm-sales-foundations.jpg",
       "documentUrl": "assets/certificates/ibm-sales-foundations.pdf",
       "documentType": "pdf",
@@ -661,7 +661,7 @@ window.SITE_CONTENT = {
       "issuer": "Amazon Web Services",
       "status": "Completed",
       "date": "2026",
-      "description": "Authorized by Amazon Web Services · offered through Coursera",
+      "description": "Issued by Amazon Web Services · through Coursera",
       "image": "assets/certificates/aws-sales-foundations.jpg",
       "documentUrl": "assets/certificates/aws-sales-foundations.pdf",
       "documentType": "pdf",
@@ -673,12 +673,13 @@ window.SITE_CONTENT = {
       "issuer": "Coursera",
       "status": "Completed",
       "date": "2026",
-      "description": "Software Sales course authorized and offered through Coursera",
+      "description": "Issued by Coursera",
       "image": "assets/certificates/software-sales.jpg",
       "documentUrl": "assets/certificates/software-sales.pdf",
       "documentType": "pdf",
       "externalUrl": "https://coursera.org/verify/XX1WHG3WDJNP",
       "visible": true
     }
-  ]};
+  ]
+};
 window.SITE_CONTENT_READY = Promise.resolve(window.SITE_CONTENT);
