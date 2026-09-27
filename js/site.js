@@ -120,14 +120,19 @@ function renderCertifications() {
     card.dataset.cursor = item.documentUrl || item.image ? 'View credential' : item.status || 'Learning';
     const visual = item.image
       ? `<img src="${attr(item.image)}" alt="${attr(item.title)} certificate preview">`
-      : `<div class="certificate-placeholder"><span>${String(index + 1).padStart(2, '0')}</span><strong>${attr(item.status || 'Learning')}</strong></div>`;
+      : (item.documentType === 'pdf' && item.documentUrl
+        ? `<iframe src="${attr(item.documentUrl)}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" title="${attr(item.title)} certificate preview" tabindex="-1" aria-hidden="true"></iframe>`
+        : `<div class="certificate-placeholder"><span>${String(index + 1).padStart(2, '0')}</span><strong>${attr(item.status || 'Learning')}</strong></div>`);
+    const viewLink = item.documentUrl || item.image ? '<button class="certificate-link certificate-view" type="button">View certificate</button>' : '';
+    const verifyLink = item.externalUrl ? `<a class="certificate-link certificate-verify" href="${attr(item.externalUrl)}" target="_blank" rel="noopener noreferrer">Verify online</a>` : '';
     card.innerHTML = `
       <div class="certificate-preview">${visual}</div>
       <div class="certificate-copy">
-        <div class="certificate-meta"><span>${attr(item.issuer || '')}</span><span>${attr(item.date || '')}</span></div>
-        <h3>${attr(item.title || 'Certification')}</h3>
+        <h3 class="certificate-brand">${attr(item.issuer || 'Certification')}</h3>
+        <h4>${attr(item.title || 'Certification')}</h4>
         <p>${attr(item.description || '')}</p>
-        <strong class="certificate-status">${attr(item.status || '')}</strong>
+        <div class="certificate-actions">${viewLink}${verifyLink}</div>
+        <div class="certificate-meta"><span>${item.status ? attr(item.status) : ''}</span><span>${item.date ? attr(item.date) : ''}</span></div>
       </div>`;
     if (item.documentUrl || item.image) {
       card.tabIndex = 0;
@@ -137,9 +142,13 @@ function renderCertifications() {
         type: item.documentType === 'pdf' ? 'pdf' : 'image',
         url: item.documentUrl || item.image,
         downloadUrl: item.documentUrl || item.image,
+        downloadFilename: `${(item.issuer || 'Certificate').replace(/[^a-z0-9]+/gi, '_')}_${(item.title || 'Credential').replace(/[^a-z0-9]+/gi, '_')}.pdf`,
         externalUrl: item.externalUrl || ''
       });
-      card.addEventListener('click', open);
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('.certificate-verify')) return;
+        open();
+      });
       card.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); } });
     }
     rail.appendChild(card);
